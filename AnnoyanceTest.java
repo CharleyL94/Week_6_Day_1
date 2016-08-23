@@ -1,14 +1,18 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 public class AnnoyanceTest{
   Annoyance annoyance;
   Tourists tourists;
+  Flyers flyers;
+  Survey survey;
 
   @Before
   public void before() {
-    annoyance = new Annoyance(1);
+    annoyance = new Annoyance();
     tourists = new Tourists();
+    flyers = new Flyers();
+    survey = new Survey();
   }
 
   @Test 
@@ -17,8 +21,8 @@ public class AnnoyanceTest{
   }
 
   @Test
-  public void levelOfAnnoyanceStartsAtOne(){
-    assertEquals(1, annoyance.touristsCount());
+  public void levelOfAnnoyanceStartsAtZero(){
+    assertEquals(0, annoyance.touristsCount());
   }
 
 @Test
@@ -27,28 +31,28 @@ public void levelOfAnnoyanceCanIncrease(){
   assertEquals(2, annoyance.touristsCount());
 }
 
-@Test
-public void cannotGetEvenMoreAnnoyedWhenAnnoyancePeaked(){
-  for(int i=1; i < 11; i++){
-    annoyance.increase(tourists);
-  }
-  assertEquals(10, annoyance.touristsCount());
-}
+// @Test
+// public void cannotGetEvenMoreAnnoyedWhenAnnoyancePeaked(){
+//   for(int i=1; i < 11; i++){
+//     annoyance.increase(tourists);
+//   }
+//   assertEquals(10, annoyance.touristsCount());
+// }
 
-@Test
-public void annoynacePeaked(){
-  for(int i=1; i < 11; i++){
-    annoyance.increase(tourists);
-  }
-  assertEquals(true, annoyance.annoyancePeaked());
-}
+// @Test
+// public void annoynacePeaked(){
+//   for(int i=1; i < 11; i++){
+//     annoyance.increase(tourists);
+//   }
+//   assertEquals(true, annoyance.annoyancePeaked());
+// }
 
-@Test
-public void annoyanceHasNotPeaked(){
-  for(int i=1; i < 7; i++){
-  }
-    assertEquals(false, annoyance.annoyancePeaked());
-  }
+// @Test
+// public void annoyanceHasNotPeaked(){
+//   for(int i=1; i < 7; i++){
+//   }
+//     assertEquals(false, annoyance.annoyancePeaked());
+//   }
 
 @Test
 public void annoyanceShouldResetAfterIHaveLeftTown(){
